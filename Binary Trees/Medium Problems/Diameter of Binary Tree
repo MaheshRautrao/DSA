@@ -1,0 +1,68 @@
+Problem link ---> https://leetcode.com/problems/diameter-of-binary-tree
+
+
+class Solution {
+public:
+// *********************************************************************
+// First Approach ---> 
+
+  //  int height(TreeNode* root)
+  //  {
+  //      if(!root) return 0;
+
+  //      return max(height(root->left),height(root->right))+1;
+  //  }
+
+  //   void  diametrFirst(TreeNode* root,int& diameter)
+  //   {
+  //       if(!root) return;
+
+  //       int lh = height(root->left);
+  //       int rh = height(root->right);
+
+  //        diameter = max(diameter,lh+rh);
+
+  //        diametrFirst(root->left,diameter);
+  //        diametrFirst(root->right,diameter);
+  //   }
+    
+// Time Comlpexity ---> O(n*n) O(n) for height of each node and O(n) for each call
+// Space Complexity ---> O(1) extra space + O(h) (height of tree) recursion stack space
+
+// *****************************************************************************************
+
+// Second Approach -----> 
+
+      // int diametrSecond(TreeNode* root,int &diameter)
+      // {
+      //    if(!root) return 0;
+
+      //    int lh = diametrSecond(root->left,diameter);
+      //    int rh = diametrSecond(root->right,diameter);
+
+      //    diameter = max(diameter,lh+rh);
+
+      //    return 1+ max(lh,rh);
+
+
+      // }
+
+      // Time Complexity -----> O(n) as every node called once
+      // Space Complexity -----> O(1) + O(h) recusionn stack space
+
+  //  ************************************** function **********************************************
+
+
+
+    int diameterOfBinaryTree(TreeNode* root) {
+      // int diameter=0;
+      // diametrFirst(root,diameter);
+      // return diameter;
+
+      int diameter=0;
+      diametrSecond(root,diameter);
+      return diameter;
+
+         
+    }
+};

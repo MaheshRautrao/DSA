@@ -1,0 +1,36 @@
+Problem link ------> https://leetcode.com/problems/same-tree
+
+
+class Solution {
+public:
+// brute approach will be , take any traversal and store in vector for both trees and then compare the vectors
+
+// ************************************************************************
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        
+       if(p && q) {
+           if(p->val != q->val) return false;
+       }
+
+       if(!p && q) return false;
+       
+       if(p && !q) return false;
+
+       if(!p && !q) return true;
+
+       return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
+    
+
+    // check this code
+
+    // if (!p || !q)
+    // {
+    //     return p==q;
+    // }
+    
+    // if(p->val != q->val) return false;
+
+    // return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
+
+    }
+};

@@ -1,0 +1,60 @@
+class Solution {
+public:
+
+// Problem Link -  https://leetcode.com/problems/balanced-binary-tree
+
+//    *****************************************************************
+// First Apporoach --->
+
+//    int height(TreeNode* root)
+//    {
+//        if(!root) return 0;
+
+//        return max(height(root->left),height(root->right)) + 1;
+//    }
+
+//    bool check(TreeNode* root)
+//    {
+//        if(!root) return true;
+
+//        int lh = height(root->left);
+//        int rh = height(root->right);
+
+//        if(abs(lh-rh) > 1) return false;
+      
+
+//        return check(root->left) && check(root->right);
+//    }
+// 
+//     Time complexity ---> O(n*n) --> O(n) to find the height and O(n) for each call  
+//     Space complexity ---> O(1) extra + O(h) for recursion stack space --> h is max height of tree.
+// ***********************************************************************************
+
+// Second Approach --->
+
+//   int secondApproach(TreeNode* root)
+//   {
+//       if(!root) return 0;
+
+//       int lh = secondApproach(root->left);
+//       if(lh == -1) return -1;
+
+//       int rh = secondApproach(root->right);
+//       if(rh == -1) return  -1;
+     
+//       if(abs(lh-rh) > 1) return -1;
+//       return 1+max(lh,rh);
+//   }
+
+// Time complexity --> O(n)
+// Space Complexity ---> O(1) extra space and O(h) recursion stack space
+
+// **************************************************************************
+
+    bool isBalanced(TreeNode* root) {
+    //    return check(root);
+
+        if(secondApproach(root) == -1) return 0;
+        else return true;
+    }
+};

@@ -1,0 +1,106 @@
+Problem link -------> https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+
+class Solution {  
+public:
+
+ // first approach --------->
+// vector<vector<int>> firstApproach(TreeNode* root) {
+
+//                     if(!root) return {};
+
+//                     queue<TreeNode*> q;
+//                     q.push(root);
+
+//                     vector<vector<int>> ans;
+
+//                     int levelFlag = 0;
+
+//                     while(!q.empty())
+//                     {
+//                         int size = q.size();
+//                         vector<int> temp;
+                
+//                         while(size--)
+//                         {
+//                         TreeNode* node = q.front();
+//                         q.pop();
+
+//                         if(node->left) q.push(node->left);
+//                         if(node->right) q.push(node->right);
+                           
+//                            temp.push_back(node->val);
+//                         }
+                        
+//                         if(levelFlag) reverse(temp.begin(),temp.end());
+
+//                         ans.push_back(temp);
+//                         levelFlag = !levelFlag;
+
+//                     }
+                
+//                 return ans;
+
+
+//     }
+// Time Complexity --> O(n) + O(total number of nodes reversed i think 2^1 + 2^3 + 2^5 ....so on )
+// Space Complexity --> O(n)
+
+// -------------------------------------------------------------------------------
+
+// second approach --------->
+// vector<vector<int>> secondApproach(TreeNode* root)
+// {
+//         if(!root) return {};
+
+//                 queue<TreeNode*> q;
+//                 q.push(root);
+
+//                 vector<vector<int>> ans;
+
+//                 int levelFlag = 0;
+
+//                 while(!q.empty())
+//                 {
+//                     int size = q.size();
+//                     vector<int> temp(size);
+            
+//                     int index;
+//                     if(levelFlag) index =size-1;
+//                     else index = 0;
+                    
+//                     while(size--)
+//                     {
+//                     TreeNode* node = q.front();
+//                     q.pop();
+
+//                     if(node->left) q.push(node->left);
+//                     if(node->right) q.push(node->right);
+
+//                     temp[index] = node->val;
+        
+//                         if(levelFlag)  index--;
+//                         else index++;
+                        
+                    
+//                     }
+                    
+//                     ans.push_back(temp);
+//                     levelFlag = !levelFlag;
+
+//                 }
+            
+//             return ans;
+
+// }
+// Time Complexity --> O(n)
+// Space Complexity --> O(n)
+
+// ------------------------------ function ----------------------------------------------
+
+
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+    //    return firstApproach(root);
+       return secondApproach(root);
+
+    }
+};

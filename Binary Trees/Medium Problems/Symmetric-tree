@@ -1,0 +1,22 @@
+Problem link -> https://leetcode.com/problems/symmetric-tree/description/
+
+// one approach is u can store the left subtree and then traverse to right and compare but following is more optimal 
+
+class Solution {
+public:
+ 
+   bool helper(TreeNode* left,TreeNode* right)
+   {
+      if(!left || !right){
+          return left==right;
+      }
+
+      return left->val == right->val && helper(left->left,right->right) && helper(left->right,right->left);
+
+   }
+
+    bool isSymmetric(TreeNode* root) {
+     
+      return helper(root->left,root->right);
+    }
+};
